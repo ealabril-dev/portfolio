@@ -2,7 +2,7 @@ import { useState } from "react";
 import Section from "../components/Section";
 import Card from "../components/Card";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeeeovne"; // <-- 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeeeovne"; // Formspree endpoint URL
 
 export default function Contact() {
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
@@ -20,9 +20,7 @@ export default function Contact() {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         body: formData,
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
       });
 
       if (res.ok) {
@@ -33,7 +31,7 @@ export default function Contact() {
         setStatus("error");
         setErrorMsg(data?.error || "Something went wrong. Please try again.");
       }
-    } catch (err) {
+    } catch {
       setStatus("error");
       setErrorMsg("Network error. Please try again.");
     }
@@ -87,10 +85,15 @@ export default function Contact() {
               />
             </div>
 
-            {/* Anti-spam honeypot (optional) */}
-            <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+            {/* Honeypot anti-spam */}
+            <input
+              type="text"
+              name="_gotcha"
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+            />
 
-            {/* Button */}
             <button
               type="submit"
               disabled={status === "sending"}
@@ -99,7 +102,6 @@ export default function Contact() {
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
 
-            {/* Status messages */}
             {status === "success" ? (
               <p className="text-sm text-green-600 dark:text-green-400">
                 Message sent! I’ll get back to you soon.
