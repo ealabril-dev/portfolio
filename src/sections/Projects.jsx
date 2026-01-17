@@ -7,7 +7,7 @@ const projects = [
     title: "HPDAI Website",
     role: "Full Stack Developer",
     desc: "Built a full-stack web platform with authentication, dashboards, and API integration.",
-    tech: ["HTML5", "JavaScript", "jQuery", "Bootstrap"],
+    tech: ["HTML5", "JavaScript", "jQuery", "Bootstrap", "MySQL"],
     details: [
       "Implemented authentication and role-based access.",
       "Built dashboards and admin utilities for internal workflows.",
@@ -22,7 +22,7 @@ const projects = [
     title: "Dental Access Android Application",
     role: "Android Developer",
     desc: "Developed a native Android application focused on intuitive content presentation and browsing, utilizing reliable API integration for seamless access to up-to-date informational data.",
-    tech: ["Java", "SQLite", "Laravel", "PostgreSQL"],
+    tech: ["Java", "SQLite", "Laravel", "MySQL"],
     details: [
       "Designed an easy-to-navigate UI for browsing content.",
       "Implemented API-driven data sync and caching.",
@@ -34,7 +34,7 @@ const projects = [
     title: "ITMS Iris Timeclock",
     role: "Full Stack Developer",
     desc: "Delivered a full-stack solution integrating native Android development (Java/Kotlin) on biometric hardware with a custom API for PostgreSQL database connectivity.",
-    tech: ["Java/Kotlin", "PHP", "PostgreSQL"],
+    tech: ["Java/Kotlin", "PHP", "MySQL"],
     details: [
       "Integrated with biometric hardware for time logging.",
       "Created a custom API layer for device ↔ server communication.",
@@ -46,7 +46,7 @@ const projects = [
     title: "EFTC Time Management System",
     role: "Full Stack Developer",
     desc: "Managed stability and continuous development of the payroll platform. Optimized performance and delivered complex new features while ensuring reliability and compliance.",
-    tech: ["Vue.js", "Laravel", "PostgreSQL"],
+    tech: ["Vue.js", "Laravel", "MySQL"],
     details: [
       "Built and shipped new timekeeping & payroll features.",
       "Improved performance and reliability of critical workflows.",
@@ -70,7 +70,7 @@ const projects = [
     title: "Travel One – Web System",
     role: "Freelance Web Developer",
     desc: "Developed a full booking platform for a travel agency, delivering seamless workflows for users and admin staff.",
-    tech: ["Vue.js", "Laravel", "PostgreSQL"],
+    tech: ["Vue.js", "Laravel", "MySQL"],
     details: [
       "Built booking flow and admin management tools.",
       "Implemented role-based features for users/admin staff.",
