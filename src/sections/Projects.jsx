@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import Section from "../components/Section";
 import Card from "../components/Card";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const withBase = (p) => `${import.meta.env.BASE_URL}${p.replace(/^\//, "")}`;
+
 
 const projects = [
   {
@@ -29,10 +33,13 @@ const projects = [
       "Improved offline reliability with local storage patterns.",
     ],
     links: { demo: "", github: "" },
+    images: [
+      withBase("projects/dental_access_ss.png"),
+    ]
   },
   {
     title: "ITMS Iris Timeclock",
-    role: "Full Stack Developer",
+    role: "Android Developer",
     desc: "Delivered a full-stack solution integrating native Android development (Java/Kotlin) on biometric hardware with a custom API for PostgreSQL database connectivity.",
     tech: ["Java/Kotlin", "PHP", "MySQL"],
     details: [
@@ -41,6 +48,9 @@ const projects = [
       "Ensured database integrity and operational stability.",
     ],
     links: { demo: "", github: "" },
+    images: [
+      withBase("projects/iris_machine_ss1.png"),
+    ]
   },
   {
     title: "EFTC Time Management System",
@@ -53,6 +63,9 @@ const projects = [
       "Maintained maintainable code practices for long-term scaling.",
     ],
     links: { demo: "", github: "" },
+    images: [
+      withBase("projects/eftc_ss1.png"),
+    ]
   },
   {
     title: "Facility WordPress Websites",
@@ -65,6 +78,11 @@ const projects = [
       "Implemented security hardening and monitoring practices.",
     ],
     links: { demo: "", github: "" },
+    images: [
+      withBase("projects/wordpress_ss1.png"),
+      withBase("projects/wordpress_ss2.png"),
+      withBase("projects/wordpress_ss3.png"),
+    ]
   },
   {
     title: "Travel One – Web System",
@@ -187,6 +205,16 @@ function ProjectModal({ project, onClose }) {
             {project.desc}
           </p>
 
+          {/* Screenshots */}
+          {project.images?.length ? (
+            <div className="mt-5">
+              <div className="text-sm font-semibold">Screenshots</div>
+              <div className="mt-3">
+                <ImageCarousel images={project.images} title={project.title} />
+              </div>
+            </div>
+          ) : null}
+
           {/* Details */}
           {project.details?.length ? (
             <div className="mt-5">
@@ -250,3 +278,77 @@ function ProjectModal({ project, onClose }) {
     </div>
   );
 }
+
+function ImageCarousel({ images, title }) {
+  const [i, setI] = useState(0);
+
+  const prev = () => setI((v) => (v - 1 + images.length) % images.length);
+  const next = () => setI((v) => (v + 1) % images.length);
+
+  // Keyboard support
+  useEffect(() => {
+    const onKey = (e) => {
+      if (images.length <= 1) return;
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [images.length]);
+
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50
+                    dark:border-white/10 dark:bg-white/[0.03]">
+      {/* Image */}
+      <img
+        src={images[i]}
+        alt={`${title} screenshot ${i + 1}`}
+        className="h-56 w-full object-cover sm:h-72"
+        loading="lazy"
+      />
+
+      {/* Controls (only if > 1 image) */}
+      {images.length > 1 ? (
+        <>
+          <button
+            type="button"
+            onClick={prev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-slate-200 bg-white/90 p-2 text-slate-700 shadow hover:bg-white
+                       dark:border-white/10 dark:bg-black/40 dark:text-white/90 dark:hover:bg-black/55"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={18} />
+          </button>
+
+          <button
+            type="button"
+            onClick={next}
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-slate-200 bg-white/90 p-2 text-slate-700 shadow hover:bg-white
+                       dark:border-white/10 dark:bg-black/40 dark:text-white/90 dark:hover:bg-black/55"
+            aria-label="Next image"
+          >
+            <ChevronRight size={18} />
+          </button>
+
+          {/* Dots */}
+          <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setI(idx)}
+                className={`h-2 w-2 rounded-full transition ${
+                  idx === i
+                    ? "bg-orange-500"
+                    : "bg-slate-300 hover:bg-slate-400 dark:bg-white/30 dark:hover:bg-white/45"
+                }`}
+                aria-label={`Go to image ${idx + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      ) : null}
+    </div>
+  );
+}
+
