@@ -18,9 +18,12 @@ const projects = [
       "Integrated API endpoints and improved performance for common flows.",
     ],
     links: {
-      demo: "",
+      demo: "https://healthpartnersdental.com",
       github: "",
     },
+    images: [
+      withBase("projects/hpdai_ss1.png"),
+    ]
   },
   {
     title: "Dental Access Android Application",
