@@ -98,6 +98,9 @@ const projects = [
       "Delivered a complete end-to-end system workflow.",
     ],
     links: { demo: "", github: "" },
+    images: [
+      withBase("projects/travel_one_ss1.png"),
+    ]
   },
 ];
 
