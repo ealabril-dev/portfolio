@@ -10,20 +10,20 @@ const projects = [
   {
     title: "HPDAI Website",
     role: "Full Stack Developer",
-    desc: "Built a full-stack web platform with authentication, dashboards, and API integration.",
+    desc: "Improved a full-stack web platform with informative details.",
     tech: ["HTML5", "JavaScript", "jQuery", "Bootstrap", "MySQL"],
     details: [
-      "Implemented authentication and role-based access.",
-      "Built dashboards and admin utilities for internal workflows.",
-      "Integrated API endpoints and improved performance for common flows.",
+      "Translated complex desktop layouts into intuitive mobile-friendly experiences.",
+      "Built affiliated list search function and sorting function",
     ],
+    /**
     links: {
       demo: "https://healthpartnersdental.com",
       github: "",
     },
     images: [
       withBase("projects/hpdai_ss1.png"),
-    ]
+    ] */
   },
   {
     title: "Dental Access Android Application",

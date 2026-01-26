@@ -17,6 +17,11 @@ const skills = [
     desc: "Focus on maintainability, testing, and clean code for long-term success.",
     bullets: ["Clean architecture", "Testing mindset", "Collaboration & documentation"],
   },
+  {
+    title: "IT Infrastructure & Support",
+    desc: "Managing and securing the hardware and networking foundations that power modern business operations.",
+    bullets: ["PC & System Troubleshooting", "Network Administration", "VoIP & Telephony", "Security & Identity"],
+  },
 ];
 
 export default function Skills() {
@@ -26,7 +31,7 @@ export default function Skills() {
       title="Skills"
       subtitle="Core capabilities I bring to teams and projects."
     >
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {skills.map((s) => (
           <Card key={s.title} className="p-6">
             <h3 className="text-lg font-semibold">{s.title}</h3>
